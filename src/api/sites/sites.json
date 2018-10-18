@@ -1,0 +1,35 @@
+[
+  {
+    "siteId": 2,
+    "name": "Three Lochs View",
+    "category": "Designated Camping",
+    "location": "Trossachs",
+    "shortDescription": "11km of wilderness parking",
+    "price": 2.99,
+    "starRating": 4.2,
+    "facilities": "A, B, F, G, K",
+    "imageUrl": "https://openclipart.org/image/300px/svg_to_png/293868/van16.png"
+  },
+  {
+    "siteId": 4,
+    "name": "Loch Morloch",
+    "category": "Wild Camping",
+    "location": "Aviemore",
+    "shortDescription": "Wild camping next to loch",
+    "price": 0,
+    "starRating": 4.2,
+    "facilities": "A",
+    "imageUrl": "https://openclipart.org/image/300px/svg_to_png/293868/van16.png"
+  },
+  {
+    "siteId": 1,
+    "name": "Borders View",
+    "category": "Designated Camping",
+    "location": "Scottish Borders",
+    "shortDescription": "Open camp ground",
+    "price": 22.99,
+    "starRating": 2.0,
+    "facilities": "A, B, F, G, R, K, Z",
+    "imageUrl": "https://openclipart.org/image/300px/svg_to_png/293868/van16.png"
+  }
+]
