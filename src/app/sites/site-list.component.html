@@ -40,7 +40,7 @@
           <td>
             <img *ngIf="imageVisable" [src]="site.imageUrl" [title]="site.name" [style.width.px]=imageWidth [style.margin.px]=imageMargin>
           </td>
-          <td>{{ site.name}}</td>
+          <td><a [routerLink]="['/sites', site.siteId]">{{site.name}}</a></td>
           <td>{{ site.category }}</td>
           <td>{{ site.shortDescription }}</td>
           <td>{{ site.location }}</td>
