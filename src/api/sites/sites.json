@@ -8,7 +8,7 @@
     "price": 2.99,
     "starRating": 4.2,
     "facilities": "A, B, F, G, K",
-    "imageUrl": "https://openclipart.org/image/300px/svg_to_png/293868/van16.png"
+    "imageUrl": "http://www.clker.com/cliparts/0/0/a/2/12065720822047655391johnny_automatic_NPS_map_pictographs_part_63.svg.thumb.png"
   },
   {
     "siteId": 4,
@@ -19,7 +19,7 @@
     "price": 0,
     "starRating": 4.2,
     "facilities": "A",
-    "imageUrl": "https://openclipart.org/image/300px/svg_to_png/293868/van16.png"
+    "imageUrl": "http://www.clker.com/cliparts/7/d/b/d/1218784895192777147geant_Pictogramme_Camping.svg.thumb.png"
   },
   {
     "siteId": 1,
@@ -30,6 +30,6 @@
     "price": 22.99,
     "starRating": 2.0,
     "facilities": "A, B, F, G, R, K, Z",
-    "imageUrl": "https://openclipart.org/image/300px/svg_to_png/293868/van16.png"
+    "imageUrl": "http://www.clker.com/cliparts/0/0/a/2/12065720822047655391johnny_automatic_NPS_map_pictographs_part_63.svg.thumb.png"
   }
 ]
