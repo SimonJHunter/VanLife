@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {SiteListComponent} from './site-list.component';
 import {SiteDetailComponent} from './site-detail.component';
 import {SiteDetailGuard} from './site-detail.guard';
-import {StarComponent} from '../shared/star.component';
 import {DisplayPricePipe} from '../shared/display-price.pipe';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
+  declarations: [
+    SiteListComponent,
+    DisplayPricePipe,
+    SiteDetailComponent,
+  ],
   imports: [
-    CommonModule,
-    FormsModule,
     RouterModule.forChild([
       {path: 'sites', component: SiteListComponent},
       {path: 'sites/:id',
@@ -20,12 +20,6 @@ import { SharedModule } from '../shared/shared.module';
         component: SiteDetailComponent},
     ]),
     SharedModule
-  ],
-  declarations: [
-    SiteListComponent,
-    DisplayPricePipe,
-    StarComponent,
-    SiteDetailComponent,
   ]
 })
 export class SiteModule { }
