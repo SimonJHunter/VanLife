@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ISite} from './site';
 import {ActivatedRoute, Router} from '@angular/router';
+import {SiteService} from './site.service';
 
 @Component({
   templateUrl: './site-detail.component.html',
@@ -8,29 +9,31 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class SiteDetailComponent implements OnInit {
   pageTitle = 'Site Detail';
-  site: ISite;
+  errorMessage = '';
+  site: ISite | undefined;
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private siteService: SiteService) { }
 
   ngOnInit() {
-    let id = +this.route.snapshot.paramMap.get('id');
-    this.pageTitle += `: ${id}`;
-
-    this.site = {
-      "siteId": 2,
-      "name": "Three Lochs View",
-      "category": "Designated Camping",
-      "location": "Trossachs",
-      "shortDescription": "11km of wilderness parking",
-      "price": 2.99,
-      "starRating": 4.2,
-      "facilities": "A, B, F, G, K",
-      "imageUrl": "https://openclipart.org/image/300px/svg_to_png/293868/van16.png"
+    const param = this.route.snapshot.paramMap.get('id');
+    if (param) {
+      const id = +param;
+      this.getSite(id);
     }
+  }
+
+  private getSite(id: number) {
+    this.siteService.getSite(id).subscribe(
+      site => this.site = site,
+      error => this.errorMessage = <any>error);
   }
 
   onBack(): void {
     this.router.navigate(['/sites']);
   }
+
 
 }

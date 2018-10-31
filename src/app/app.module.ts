@@ -23,6 +23,7 @@ import { SiteModule } from './sites/site.module';
       {path: '', redirectTo: 'welcome', pathMatch: 'full'},
       {path: '**', redirectTo: 'welcome', pathMatch: 'full'},
     ]),
+    //Feature modules
     SiteModule
   ],
   providers: [],

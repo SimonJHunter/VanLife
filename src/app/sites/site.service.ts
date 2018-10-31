@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {ISite} from './site';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
-import {catchError, tap} from 'rxjs/operators';
+import {catchError, tap, map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +20,12 @@ export class SiteService{
     );
   }
 
+  getSite(id: number): Observable<ISite | undefined> {
+    return this.getSites().pipe(
+      map((sites: ISite[]) => sites.find(s => s.siteId === id))
+    );
+  }
+
   private handleError (err: HttpErrorResponse) {
     let errorMessage = '';
     if (err.error instanceof ErrorEvent) {
@@ -30,5 +36,4 @@ export class SiteService{
     console.error(errorMessage);
     return throwError(errorMessage);
   }
-
 }
