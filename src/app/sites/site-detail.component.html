@@ -8,28 +8,24 @@
     <div class='row'>
       <div class='col-md-8'>
         <div class='row'>
-          <div class='col-md-4'>Name:</div>
-          <div class='col-md-8'>{{site.name}}</div>
+          <div class='col-md-2'>Name:</div>
+          <div class='col-md-10'>{{site.name}}</div>
         </div>
         <div class='row'>
-          <div class='col-md-4'>Category:</div>
-          <div class='col-md-8'>{{site.category}}</div>
+          <div class='col-md-2'>Category:</div>
+          <div class='col-md-10'>{{site.category}}</div>
         </div>
         <div class='row'>
-          <div class='col-md-4'>Description:</div>
-          <div class='col-md-8'>{{site.shortDescription}}</div>
+          <div class='col-md-2'>Location:</div>
+          <div class='col-md-10'>{{site.location}}</div>
         </div>
         <div class='row'>
-          <div class='col-md-4'>Location:</div>
-          <div class='col-md-8'>{{site.location}}</div>
+          <div class='col-md-2'>Price:</div>
+          <div class='col-md-10'>{{site.price|currency:'GBP':'symbol'}}</div>
         </div>
         <div class='row'>
-          <div class='col-md-4'>Price:</div>
-          <div class='col-md-8'>{{site.price|currency:'GBP':'symbol'}}</div>
-        </div>
-        <div class='row'>
-          <div class='col-md-4'>5 Star Rating:</div>
-          <div class='col-md-8'>
+          <div class='col-md-2'>Rating:</div>
+          <div class='col-md-10'>
             <app-vl-star [rating]='site.starRating'>
             </app-vl-star>
           </div>
@@ -42,6 +38,12 @@
              [style.margin.px]='2'
              [src]='site.imageUrl'
              [title]='site.name'>
+      </div>
+    </div>
+    <div class='row'>&nbsp;</div>
+    <div class='row'>
+      <div class='col-md-12'>
+        <div>{{site.description}}</div>
       </div>
     </div>
   </div>

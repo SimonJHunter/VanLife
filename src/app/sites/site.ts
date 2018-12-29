@@ -4,6 +4,7 @@ export interface ISite {
   category: string;
   location: string;
   shortDescription: string;
+  description: string;
   price: number;
   starRating: number;
   facilities: string;
