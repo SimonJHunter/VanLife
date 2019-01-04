@@ -7,7 +7,7 @@ import {catchError, tap, map} from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class SiteService{
+export class SiteService {
 
   private siteUrl = 'api/sites/sites.json';
 

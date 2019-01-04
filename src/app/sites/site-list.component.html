@@ -47,7 +47,14 @@
           <td>{{site.price | displayPrice: '£'}}</td>
           <td>{{ site.facilities }}</td>
           <td><app-vl-star [rating]='site.starRating'
-                           (ratingClicked)='onRatingClicked($event)'></app-vl-star></td>
+                           (ratingClicked)='onRatingClicked($event)'></app-vl-star>
+          </td>
+          <td>
+            <button class="btn btn-outline-primary btn-sm"
+                      [routerLink]="['/sites', site.siteId, 'edit']">
+              Edit
+            </button>
+          </td>
         </tr>
         </tbody>
       </table>
