@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ISite} from './site';
+import {Site} from './site';
 import {ActivatedRoute, Router} from '@angular/router';
 import {SiteService} from './site.service';
 
@@ -10,7 +10,7 @@ import {SiteService} from './site.service';
 export class SiteDetailComponent implements OnInit {
   pageTitle = 'Site Detail';
   errorMessage = '';
-  site: ISite | undefined;
+  site: Site | undefined;
 
   constructor(
     private route: ActivatedRoute,

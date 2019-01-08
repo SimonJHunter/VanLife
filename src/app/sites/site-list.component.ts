@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ISite} from './site';
+import {Site} from './site';
 import {SiteService} from './site.service';
 
 @Component({
@@ -24,8 +24,8 @@ export class SiteListComponent implements OnInit {
 
   private _listFilter: string;
 
-  filteredSites: ISite[];
-  sites: ISite[] = [];
+  filteredSites: Site[];
+  sites: Site[] = [];
 
   constructor(private siteService: SiteService) {
   }
@@ -47,9 +47,9 @@ export class SiteListComponent implements OnInit {
     );
   }
 
-  private performFilter(filterBy: string): ISite[] {
+  private performFilter(filterBy: string): Site[] {
     filterBy = filterBy.toLocaleLowerCase();
-    return this.sites.filter((site: ISite) =>
+    return this.sites.filter((site: Site) =>
       site.category.toLocaleLowerCase().indexOf(filterBy) !== -1);
   }
 }

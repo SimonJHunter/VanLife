@@ -1,4 +1,4 @@
-export interface ISite {
+export interface Site {
   siteId: number;
   name: string;
   category: string;
