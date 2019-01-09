@@ -1,15 +1,16 @@
 import {Injectable} from '@angular/core';
-import {Site} from './site';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import {Observable, throwError} from 'rxjs';
+import {HttpClient, HttpHeaders, HttpErrorResponse} from '@angular/common/http';
+
+import {Observable, of, throwError} from 'rxjs';
 import {catchError, tap, map} from 'rxjs/operators';
+
+import {Site} from './site';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SiteService {
-
-  private siteUrl = 'api/sites/sites.json';
+  private siteUrl = 'api/sites';
 
   constructor (private http: HttpClient) {}
 
@@ -26,37 +27,37 @@ export class SiteService {
     );
   }
 
-  // createProduct(product: Product): Observable<Product> {
-  //   const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  //   product.id = null;
-  //   return this.http.post<Product>(this.productsUrl, product, { headers: headers })
-  //     .pipe(
-  //       tap(data => console.log('createProduct: ' + JSON.stringify(data))),
-  //       catchError(this.handleError)
-  //     );
-  // }
+  createSite(site: Site): Observable<Site> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    site.siteId = null;
+    return this.http.post<Site>(this.siteUrl, site, { headers: headers })
+      .pipe(
+        tap(data => console.log('createSite: ' + JSON.stringify(data))),
+        catchError(this.handleError)
+      );
+  }
 
-  // deleteProduct(id: number): Observable<{}> {
-  //   const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  //   const url = `${this.productsUrl}/${id}`;
-  //   return this.http.delete<Product>(url, { headers: headers })
-  //     .pipe(
-  //       tap(data => console.log('deleteProduct: ' + id)),
-  //       catchError(this.handleError)
-  //     );
-  // }
+  deleteSite(id: number): Observable<{}> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const url = `${this.siteUrl}/${id}`;
+    return this.http.delete<Site>(url, { headers: headers })
+      .pipe(
+        tap(data => console.log('deleteSite: ' + id)),
+        catchError(this.handleError)
+      );
+  }
 
-  // updateProduct(product: Product): Observable<Product> {
-  //   const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  //   const url = `${this.productsUrl}/${product.id}`;
-  //   return this.http.put<Product>(url, product, { headers: headers })
-  //     .pipe(
-  //       tap(() => console.log('updateProduct: ' + product.id)),
-  //       // Return the product on an update
-  //       map(() => product),
-  //       catchError(this.handleError)
-  //     );
-  // }
+  updateSite(site: Site): Observable<Site> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const url = `${this.siteUrl}/${site.siteId}`;
+    return this.http.put<Site>(url, site, { headers: headers })
+      .pipe(
+        tap(() => console.log('updateSite: ' + site.siteId)),
+        // Return the product on an update
+        map(() => site),
+        catchError(this.handleError)
+      );
+  }
 
 
 

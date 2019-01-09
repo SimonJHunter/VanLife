@@ -1,0 +1,48 @@
+import { InMemoryDbService } from 'angular-in-memory-web-api';
+
+import { Site } from './site';
+
+export class SiteData implements InMemoryDbService {
+
+  createDb() {
+    const sites: Site[] = [
+      {
+        'siteId': 2,
+        'name': 'Three Lochs View',
+        'category': 'Designated Camping',
+        'location': 'Trossachs',
+        'shortDescription': '11km of wilderness parking',
+        'description': 'This absolutely stunning 11km of wilderness parking has Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis egestas eget orci at mattis. Proin ac elit maximus, ullamcorper tortor at, tristique tellus. In vitae massa massa. Sed congue hendrerit nisl, in imperdiet mauris. Aliquam quis lectus sollicitudin, pretium sapien vel, iaculis enim. Ut ut lacus erat. Maecenas vehicula nunc vel velit gravida, vel feugiat sapien gravida. Nullam faucibus lorem in dui semper, at hendrerit magna commodo. Nulla velit lacus, aliquet vestibulum lectus ac, commodo semper eros. Donec nec nulla eget leo iaculis cursus. Morbi lobortis sit amet augue a laoreet. Etiam neque quam, commodo eu lectus in, hendrerit bibendum sem. ',
+        'price': 2.99,
+        'starRating': 4.2,
+        'imageUrl': 'http://www.clker.com/cliparts/0/0/a/2/12065720822047655391johnny_automatic_NPS_map_pictographs_part_63.svg.thumb.png',
+        'facilities': ['A', 'B', 'F', 'G', 'K']
+      },
+      {
+        'siteId': 4,
+        'name': 'Loch Morloch',
+        'category': 'Wild Camping',
+        'location': 'Aviemore',
+        'shortDescription': 'Wild camping next to loch',
+        'description': 'Wild camping next to loch Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis egestas eget orci at mattis. Proin ac elit maximus, ullamcorper tortor at, tristique tellus. In vitae massa massa. Sed congue hendrerit nisl, in imperdiet mauris. Aliquam quis lectus sollicitudin, pretium sapien vel, iaculis enim. Ut ut lacus erat. Maecenas vehicula nunc vel velit gravida, vel feugiat sapien gravida. Nullam faucibus lorem in dui semper, at hendrerit magna commodo. Nulla velit lacus, aliquet vestibulum lectus ac, commodo semper eros. Donec nec nulla eget leo iaculis cursus. Morbi lobortis sit amet augue a laoreet. Etiam neque quam, commodo eu lectus in, hendrerit bibendum sem. ',
+        'price': 0,
+        'starRating': 4.2,
+        'imageUrl': 'http://www.clker.com/cliparts/7/d/b/d/1218784895192777147geant_Pictogramme_Camping.svg.thumb.png',
+        'facilities': ['A']
+      },
+      {
+        'siteId': 1,
+        'name': 'Borders View',
+        'category': 'Designated Camping',
+        'location': 'Scottish Borders',
+        'shortDescription': 'Open camp ground',
+        'description': 'Open camp ground Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis egestas eget orci at mattis. Proin ac elit maximus, ullamcorper tortor at, tristique tellus. In vitae massa massa. Sed congue hendrerit nisl, in imperdiet mauris. Aliquam quis lectus sollicitudin, pretium sapien vel, iaculis enim. Ut ut lacus erat. Maecenas vehicula nunc vel velit gravida, vel feugiat sapien gravida. Nullam faucibus lorem in dui semper, at hendrerit magna commodo. Nulla velit lacus, aliquet vestibulum lectus ac, commodo semper eros. Donec nec nulla eget leo iaculis cursus. Morbi lobortis sit amet augue a laoreet. Etiam neque quam, commodo eu lectus in, hendrerit bibendum sem. ',
+        'price': 22.99,
+        'starRating': 2.0,
+        'imageUrl': 'http://www.clker.com/cliparts/0/0/a/2/12065720822047655391johnny_automatic_NPS_map_pictographs_part_63.svg.thumb.png',
+        'facilities': ['A', 'F', 'G']
+      }
+    ];
+    return { sites };
+  }
+}

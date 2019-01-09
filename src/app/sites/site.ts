@@ -7,6 +7,6 @@ export interface Site {
   description: string;
   price: number;
   starRating: number;
-  facilities: string;
+  facilities?: string[];
   imageUrl: string;
 }
