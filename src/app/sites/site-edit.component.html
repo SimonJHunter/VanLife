@@ -1,0 +1,201 @@
+<div class="card">
+  <div class="card-header">
+    {{pageTitle}}
+  </div>
+
+  <div class="card-body">
+    <form novalidate
+          autocomplete="off"
+          (ngSubmit)="saveSite()"
+          [formGroup]="siteForm">
+
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label"
+               for="siteName">Site Name</label>
+        <div class="col-md-8">
+          <input class="form-control"
+                 id="siteName"
+                 type="text"
+                 placeholder="Name (required)"
+                 formControlName="siteName"
+                 [ngClass]="{'is-invalid': displayMessage.siteName}" />
+          <span class="invalid-feedback">
+            {{displayMessage.siteName}}
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label"
+               for="category">Category</label>
+        <div class="col-md-8">
+          <select class="form-control"
+                 id="category"
+                 type="text"
+                 formControlName="category"
+                 [ngClass]="{'is-invalid': displayMessage.category}" >
+            <option value="" disabled selected>Category (required)</option>
+            <option *ngFor="let value of categoryOptions" [value]="value">{{value}}</option>
+          </select>
+          <span class="invalid-feedback">
+            {{displayMessage.category}}
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label"
+               for="siteLocation">Location</label>
+        <div class="col-md-8">
+          <input class="form-control"
+                 id="siteLocation"
+                 type="text"
+                 placeholder="Location (required)"
+                 formControlName="location"
+                 [ngClass]="{'is-invalid': displayMessage.location }" />
+          <span class="invalid-feedback">
+            {{displayMessage.location}}
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label"
+               for="shortDescription">Short Desc</label>
+        <div class="col-md-8">
+          <input class="form-control"
+                 id="shortDescription"
+                 type="text"
+                 placeholder="Short Description (required)"
+                 formControlName="shortDescription"
+                 [ngClass]="{'is-invalid': displayMessage.shortDescription }" />
+          <span class="invalid-feedback">
+            {{displayMessage.shortDescription}}
+          </span>
+        </div>
+
+
+      </div>
+
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label"
+               for="description">Description</label>
+        <div class="col-md-8">
+          <textarea class="form-control"
+                 id="description"
+                 rows="5"
+                 placeholder=""
+                 formControlName="description"
+                    [ngClass]="{'is-invalid': displayMessage.description }" ></textarea>
+          <span class="invalid-feedback">
+            {{displayMessage.description}}
+          </span>
+        </div>
+
+
+
+
+
+      </div>
+
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label"
+               for="price">Price</label>
+        <div class="col-md-8">
+          <input class="form-control"
+                 id="price"
+                 type="number"
+                 placeholder="£ Price"
+                 formControlName="price"
+                 [ngClass]="{'is-invalid': displayMessage.price }" />
+          <span class="invalid-feedback">
+            {{displayMessage.price}}
+          </span>
+        </div>
+
+
+      </div>
+
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label"
+               for="starRating">Rating</label>
+        <div class="col-md-8">
+          <input class="form-control"
+                    id="starRating"
+                    type="text"
+                    placeholder="Rating 1-5"
+                    formControlName="starRating"
+                    [ngClass]="{'is-invalid': displayMessage.starRating }" />
+          <span class="invalid-feedback">
+            {{displayMessage.starRating}}
+          </span>
+        </div>
+
+
+
+
+
+      </div>
+
+      <div formArrayName="facilities">
+        <div class="row">
+          <div class="col-md-1">
+            <button class="btn btn-outline-secondary"
+                    type="button"
+                    (click)="addFacility()">Add Facility
+            </button>
+          </div>
+        </div>
+        <div class="form-group row"
+             *ngFor="let facility of facilities.controls; let i=index">
+          <label class="col-md-2 col-form-label"
+                 [attr.for]="i">Facility</label>
+
+          <div class="col-md-8">
+            <input class="form-control"
+                   [id]="i"
+                   type="text"
+                   placeholder="Facility"
+                   [formControlName]="i" />
+          </div>
+          <button class="col-md-2 btn btn-outline-warning"
+                  type="button"
+                  (click)="deleteFacility(i)">Delete
+          </button>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-1">
+          <button class="btn btn-primary"
+                  style='width:80px'
+                  type="submit"
+                  [disabled]="!siteForm.valid || !siteForm.dirty">
+            Save
+          </button>
+        </div>
+        <div class="col-md-1">
+          <button class="btn btn-outline-secondary"
+                  style='width:80px'
+                  type="button"
+                  [routerLink]="['/sites']">
+            Cancel
+          </button>
+        </div>
+        <div class="col-md-1">
+          <button class="btn btn-outline-warning"
+                  style='width:80px'
+                  type="button"
+                  (click)="deleteSite()">
+            Delete
+          </button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+  <div class='alert alert-danger'
+       *ngIf='errorMessage'>{{errorMessage}}
+>  </div>
+</div>
