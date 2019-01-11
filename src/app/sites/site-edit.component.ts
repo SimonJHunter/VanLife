@@ -80,6 +80,7 @@ export class SiteEditComponent implements OnInit, AfterViewInit, OnDestroy {
       description: '',
       price: [''],
       starRating: ['', NumberValidators.range(1, 5)],
+      imageUrl: '',
       facilities: this.fb.array([])
     });
 
@@ -145,7 +146,8 @@ export class SiteEditComponent implements OnInit, AfterViewInit, OnDestroy {
         shortDescription: this.site.shortDescription,
         description: this.site.description,
         price: this.site.price,
-        starRating: this.site.starRating
+        starRating: this.site.starRating,
+        imageUrl: this.site.imageUrl
       });
 
       this.siteForm.setControl('facilities', this.fb.array(this.site.facilities || []));
