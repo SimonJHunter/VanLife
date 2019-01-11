@@ -11,16 +11,16 @@
 
       <div class="form-group row">
         <label class="col-md-2 col-form-label"
-               for="siteName">Site Name</label>
+               for="name">Name</label>
         <div class="col-md-8">
           <input class="form-control"
-                 id="siteName"
+                 id="name"
                  type="text"
                  placeholder="Name (required)"
-                 formControlName="siteName"
-                 [ngClass]="{'is-invalid': displayMessage.siteName}" />
+                 formControlName="name"
+                 [ngClass]="{'is-invalid': displayMessage.name}" />
           <span class="invalid-feedback">
-            {{displayMessage.siteName}}
+            {{displayMessage.name}}
           </span>
         </div>
       </div>
@@ -130,11 +130,22 @@
             {{displayMessage.starRating}}
           </span>
         </div>
+      </div>
 
-
-
-
-
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label"
+               for="photo">Photo</label>
+        <div class="col-md-8">
+          <input class="form-control"
+                 id="photo"
+                 type="text"
+                 placeholder="URL"
+                 formControlName="imageUrl"
+                 [ngClass]="{'is-invalid': displayMessage.imageUrl }" />
+          <span class="invalid-feedback">
+            {{displayMessage.imageUrl}}
+          </span>
+        </div>
       </div>
 
       <div formArrayName="facilities">

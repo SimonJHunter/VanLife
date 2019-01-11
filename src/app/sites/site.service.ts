@@ -16,20 +16,26 @@ export class SiteService {
 
   getSites(): Observable<Site[]> {
     return this.http.get<Site[]>(this.siteUrl).pipe(
-      tap(data => console.log('All:' + JSON.stringify(data))),
+      tap(data => console.log(JSON.stringify(data))),
       catchError(this.handleError)
     );
   }
 
-  getSite(id: number): Observable<Site | undefined> {
-    return this.getSites().pipe(
-      map((sites: Site[]) => sites.find(s => s.siteId === id))
-    );
+  getSite(id: number): Observable<Site> {
+    if (id === 0) {
+      return of(this.initializeSite());
+    }
+    const url = `${this.siteUrl}/${id}`;
+    return this.http.get<Site>(url)
+      .pipe(
+        tap(data => console.log('getSite: ' + JSON.stringify(data))),
+        catchError(this.handleError)
+      );
   }
 
   createSite(site: Site): Observable<Site> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    site.siteId = null;
+    site.id = null;
     return this.http.post<Site>(this.siteUrl, site, { headers: headers })
       .pipe(
         tap(data => console.log('createSite: ' + JSON.stringify(data))),
@@ -49,26 +55,45 @@ export class SiteService {
 
   updateSite(site: Site): Observable<Site> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    const url = `${this.siteUrl}/${site.siteId}`;
+    const url = `${this.siteUrl}/${site.id}`;
     return this.http.put<Site>(url, site, { headers: headers })
       .pipe(
-        tap(() => console.log('updateSite: ' + site.siteId)),
+        tap(() => console.log('updateSite: ' + site.id)),
         // Return the product on an update
         map(() => site),
         catchError(this.handleError)
       );
   }
 
-
-
-  private handleError (err: HttpErrorResponse) {
-    let errorMessage = '';
+  private handleError(err) {
+    // in a real world app, we may send the server to some remote logging infrastructure
+    // instead of just logging it to the console
+    let errorMessage: string;
     if (err.error instanceof ErrorEvent) {
-      errorMessage = `An error occurred:  ${err.error.message}`;
+      // A client-side or network error occurred. Handle it accordingly.
+      errorMessage = `An error occurred: ${err.error.message}`;
     } else {
-      errorMessage = `Server return code:  ${err.status}, error message is: ${err.message} `;
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong,
+      errorMessage = `Backend returned code ${err.status}: ${err.body.error}`;
     }
-    console.error(errorMessage);
+    console.error(err);
     return throwError(errorMessage);
+  }
+
+  private initializeSite(): Site {
+    // Return an initialized object
+    return {
+      id: 0,
+      name: null,
+      category: null,
+      location: null,
+      shortDescription: null,
+      description: null,
+      price: null,
+      starRating: null,
+      facilities: [''],
+      imageUrl: null
+    };
   }
 }

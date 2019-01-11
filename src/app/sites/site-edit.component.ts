@@ -14,7 +14,6 @@ import { GenericValidator } from '../shared/generic-validator';
 
 @Component({
    templateUrl: './site-edit.component.html',
-   styleUrls: ['./site-edit.component.css']
  })
 
 export class SiteEditComponent implements OnInit, AfterViewInit, OnDestroy {
@@ -47,7 +46,7 @@ export class SiteEditComponent implements OnInit, AfterViewInit, OnDestroy {
 //     // Defines all of the validation messages for the form.
 //     // These could instead be retrieved from a file or database.
     this.validationMessages = {
-      siteName: {
+      name: {
         required: 'Site name is required.',
         minlength: 'Site name must be at least three characters.',
         maxlength: 'Site name cannot exceed 50 characters.'
@@ -72,7 +71,7 @@ export class SiteEditComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit(): void {
     this.siteForm = this.fb.group({
-      siteName: ['', [Validators.required,
+      name: ['', [Validators.required,
         Validators.minLength(3),
         Validators.maxLength(50)]],
       category: ['', Validators.required],
@@ -84,7 +83,7 @@ export class SiteEditComponent implements OnInit, AfterViewInit, OnDestroy {
       facilities: this.fb.array([])
     });
 
-    // Read the product Id from the route parameter
+    // Read the site Id from the route parameter
      this.sub = this.route.params.subscribe(
        params => {
          const id = +params['id'];
@@ -133,22 +132,20 @@ export class SiteEditComponent implements OnInit, AfterViewInit, OnDestroy {
     }
     this.site = site;
 
-    if (this.site == null) {
+    if (this.site.id === 0) {
       this.pageTitle = 'Add Site';
     } else {
       this.pageTitle = `Edit Site: ${this.site.name}`;
 
-
       // Update the data on the form
       this.siteForm.patchValue({
-        siteName: this.site.name,
+        name: this.site.name,
         category: this.site.category,
         location: this.site.location,
         shortDescription: this.site.shortDescription,
         description: this.site.description,
         price: this.site.price,
         starRating: this.site.starRating
-        // facilities: string;
       });
 
       this.siteForm.setControl('facilities', this.fb.array(this.site.facilities || []));
@@ -156,12 +153,12 @@ export class SiteEditComponent implements OnInit, AfterViewInit, OnDestroy {
 }
 
   deleteSite(): void {
-    if (this.site.siteId === 0) {
+    if (this.site.id === 0) {
       // Don't delete, it was never saved.
       this.onSaveComplete();
     } else {
       if (confirm(`Really delete the site: ${this.site.name}?`)) {
-        this.siteService.deleteSite(this.site.siteId)
+        this.siteService.deleteSite(this.site.id)
           .subscribe(
             () => this.onSaveComplete(),
             (error: any) => this.errorMessage = <any>error
@@ -178,7 +175,7 @@ export class SiteEditComponent implements OnInit, AfterViewInit, OnDestroy {
         // This ensures values not on the form, such as the Id, are retained
         const p = { ...this.site, ...this.siteForm.value };
 
-        if (p.siteId === 0) {
+        if (p.id === 0) {
           this.siteService.createSite(p)
             .subscribe(
               () => this.onSaveComplete(),
@@ -197,14 +194,13 @@ export class SiteEditComponent implements OnInit, AfterViewInit, OnDestroy {
     } else {
       this.errorMessage = 'Please correct the validation errors.';
     }
-   }
+  }
 
   onSaveComplete(): void {
-     // Reset the form to clear the flags
+    // Reset the form to clear the flags
     this.siteForm.reset();
     this.router.navigate(['/sites']);
-   }
-
+  }
 
 }
 

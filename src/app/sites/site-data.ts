@@ -7,7 +7,7 @@ export class SiteData implements InMemoryDbService {
   createDb() {
     const sites: Site[] = [
       {
-        'siteId': 2,
+        'id': 2,
         'name': 'Three Lochs View',
         'category': 'Designated Camping',
         'location': 'Trossachs',
@@ -19,7 +19,7 @@ export class SiteData implements InMemoryDbService {
         'facilities': ['A', 'B', 'F', 'G', 'K']
       },
       {
-        'siteId': 4,
+        'id': 4,
         'name': 'Loch Morloch',
         'category': 'Wild Camping',
         'location': 'Aviemore',
@@ -31,7 +31,7 @@ export class SiteData implements InMemoryDbService {
         'facilities': ['A']
       },
       {
-        'siteId': 1,
+        'id': 1,
         'name': 'Borders View',
         'category': 'Designated Camping',
         'location': 'Scottish Borders',
