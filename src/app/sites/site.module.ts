@@ -13,14 +13,12 @@ import {SiteEditGuard} from './site-edit.guard';
 
 import {DisplayPricePipe} from '../shared/display-price.pipe';
 
-import {ReactiveFormsModule} from '@angular/forms';
 import { NgModule } from '@angular/core';
 import {RouterModule} from '@angular/router';
 
 @NgModule({
   imports: [
     SharedModule,
-    ReactiveFormsModule,
     InMemoryWebApiModule.forRoot(SiteData),
     RouterModule.forChild([
       {path: 'sites', component: SiteListComponent},
