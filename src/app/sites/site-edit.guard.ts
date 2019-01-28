@@ -9,10 +9,10 @@ import { SiteEditComponent } from './site-edit.component';
 })
 export class SiteEditGuard implements CanDeactivate<SiteEditComponent> {
   canDeactivate(component: SiteEditComponent): Observable<boolean> | Promise<boolean> | boolean {
-    // if (component.productForm.dirty) {
-    //  const productName = component.productForm.get('productName').value || 'New Product';
-    //  return confirm(`Navigate away and lose all changes to ${productName}?`);
-    // }
+     if (component.siteForm.dirty) {
+      const siteName = component.siteForm.get('name').value || 'New Site';
+      return confirm(`Navigate away and lose all changes to ${siteName}?`);
+     }
     return true;
   }
 }
