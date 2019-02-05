@@ -92,6 +92,7 @@ export class SiteEditComponent implements OnInit, AfterViewInit, OnDestroy {
        }
      );
   }
+
   ngOnDestroy(): void {
     this.sub.unsubscribe();
   }
@@ -108,7 +109,6 @@ export class SiteEditComponent implements OnInit, AfterViewInit, OnDestroy {
       this.displayMessage = this.genericValidator.processMessages(this.siteForm);
     });
   }
-
   // Add and Delete facility rows.
   addFacility(): void {
     this.facilities.push(new FormControl());
@@ -135,6 +135,9 @@ export class SiteEditComponent implements OnInit, AfterViewInit, OnDestroy {
 
     if (this.site.id === 0) {
       this.pageTitle = 'Add Site';
+      this.siteForm.patchValue(
+        {imageUrl: 'http://www.clker.com/cliparts/0/0/a/2/12065720822047655391johnny_automatic_NPS_map_pictographs_part_63.svg.thumb.png'
+        });
     } else {
       this.pageTitle = `Edit Site: ${this.site.name}`;
 
