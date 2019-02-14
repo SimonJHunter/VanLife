@@ -4,6 +4,8 @@ import { SharedModule } from '../shared/shared.module';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { SiteData } from './site-data';
 
+import {PanelModule} from 'primeng/primeng';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {SiteListComponent} from './site-list.component';
 import {SiteDetailComponent} from './site-detail.component';
@@ -15,6 +17,9 @@ import {DisplayPricePipe} from '../shared/display-price.pipe';
 
 import { NgModule } from '@angular/core';
 import {RouterModule} from '@angular/router';
+
+
+
 
 @NgModule({
   imports: [
@@ -32,6 +37,8 @@ import {RouterModule} from '@angular/router';
         component: SiteEditComponent
       }
     ]),
+    PanelModule,
+    BrowserAnimationsModule,
 
   ],
   declarations: [

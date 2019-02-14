@@ -8,6 +8,8 @@ import {RouterModule} from '@angular/router';
 import { SiteNosuchsiteComponent } from './sites/site-nosuchsite.component';
 import { SiteModule } from './sites/site.module';
 
+import {PanelModule} from 'primeng/primeng';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { SiteModule } from './sites/site.module';
       {path: '', redirectTo: 'welcome', pathMatch: 'full'},
       {path: '**', redirectTo: 'welcome', pathMatch: 'full'},
     ]),
-    //Feature modules
+    PanelModule,
+    BrowserAnimationsModule,
+    // Feature modules
     SiteModule
   ],
   providers: [],
